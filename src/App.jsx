@@ -1,4 +1,6 @@
 import './App.css'
+import Banner from './components/Banner';
+import ProductContainer from './components/ProductContainer';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -289,9 +291,10 @@ function App() {
 
 
   return (
-    <>
-      <h1 className='bg-red-500'>this is heading</h1>
-    </>
+    <div >
+      <Banner />
+      <ProductContainer  products={products} />
+    </div>
   )
 }
 
