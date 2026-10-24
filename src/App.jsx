@@ -3,6 +3,7 @@ import './App.css'
 import Banner from './components/Banner';
 import ProductContainer from './components/ProductContainer';
 import CartSection from './components/CartSection';
+import Navbar from './components/Navbar';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -296,6 +297,7 @@ function App() {
 
   return (
     <div >
+      <Navbar myList={myList} />
       <Banner />
       <ProductContainer myList={myList} setMyList={setMyList} products={products} />
 

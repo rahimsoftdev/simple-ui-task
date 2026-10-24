@@ -3,7 +3,7 @@ import { ArrowRight, ShoppingCart } from "lucide-react";
 
 const Banner = () => {
   return (
-    <section className="overflow-hidden  bg-gradient-to-br from-white via-sky-50 to-blue-50 md:px-10">
+    <section id="home" className="overflow-hidden  bg-gradient-to-br from-white via-sky-50 to-blue-50 md:px-10">
       <div className="max-w-main mx-auto grid min-h-[440px] grid-cols-1 items-center gap-8 px-5 py-12 md:grid-cols-2 md:py-16 lg:min-h-[540px] lg:gap-12 lg:px-0">
         <div className="z-10">
           <span className="inline-block rounded-full bg-blue-100 px-6 py-3 text-sm font-bold text-blue-600 sm:text-base">
