@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import './App.css'
 import Banner from './components/Banner';
 import ProductContainer from './components/ProductContainer';
+import CartSection from './components/CartSection';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -288,12 +290,19 @@ function App() {
     },
   ];
 
+  let [myList, setMyList] = useState([])
+
 
 
   return (
     <div >
       <Banner />
-      <ProductContainer  products={products} />
+      <ProductContainer myList={myList} setMyList={setMyList} products={products} />
+
+      <CartSection
+        myList={myList}
+        setMyList={setMyList}
+      />
     </div>
   )
 }

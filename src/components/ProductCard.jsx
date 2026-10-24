@@ -1,5 +1,21 @@
 
-const ProductCard = ({ product }) => {
+import { useState } from "react";
+
+const ProductCard = ({ product, myList, setMyList }) => {
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    if (isAdded) {
+      setMyList((prevList) =>
+        prevList.filter((item) => item.id !== product.id)
+      );
+      setIsAdded(false);
+    } else {
+      setMyList((prevList) => [...prevList, product]);
+      setIsAdded(true);
+    }
+  };
+
   return (
     <div className="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
       <div className="relative overflow-hidden bg-gray-50">
@@ -53,16 +69,28 @@ const ProductCard = ({ product }) => {
 
         <div className="flex items-center justify-between text-xs text-gray-500">
           <span>{product.brand}</span>
-          <span className={product.stock > 0 ? "text-green-600" : "text-red-500"}>
-            {product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}
+
+          <span
+            className={
+              product.stock > 0 ? "text-green-600" : "text-red-500"
+            }
+          >
+            {product.stock > 0
+              ? `${product.stock} in stock`
+              : "Out of stock"}
           </span>
         </div>
 
         <button
+          onClick={handleAddToCart}
           disabled={product.stock === 0}
-          className="w-full rounded-xl cursor-pointer bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+          className={`w-full rounded-xl px-4 py-3 font-semibold text-white transition duration-300 disabled:cursor-not-allowed disabled:bg-gray-300 ${
+            isAdded
+              ? "bg-green-600 hover:bg-green-700"
+              : "bg-blue-600 hover:bg-blue-700"
+          }`}
         >
-          Add to Cart
+          {isAdded ? "✓ Added to Cart" : "Add to Cart"}
         </button>
       </div>
     </div>
